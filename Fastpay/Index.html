@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+    <h2>FastPay</h2>
+    <p id="demo"></p>
+  <script>
+let transactions = [
+    { id: "T1", userId: "U01", amount: 500, status: "completed" },
+    { id: "T2", userId: "U02", amount: 200, status: "pending" },
+    { id: "T3", userId: "U01", amount: 500, status: "completed" }, 
+    { id: "T4", userId: "U03", amount: 150, status: "pending" }
+];
+function processPending(data) {
+    let i = 0;
+    while (i < data.length) {
+        if (data[i].status === "pending")
+         {
+            console.log("Đang xử lý giao dịch:", data[i].id);
+        } else {
+            console.log("Bỏ qua giao dịch đã hoàn thành :",data[i].id);
+        }
+        i++; 
+        //Giải pháp: Đưa lệnh i++ ra hẳn bên ngoài khối if/else, đặt ở cuối vòng lặp while. 
+        // Điều này đảm bảo bất kể giao dịch có trạng thái gì, biến đếm i vẫn luôn được tăng lên 1
+    }
+}
+
+function findDuplicates(data) {
+    let duplicateIds = [];
+    let loopCount = 0; 
+    
+    for (let i = 0; i < data.length; i++) {
+        for (let j = i+ 1; j < data.length; j++) { //Đổi điều kiện khởi tạo thành `let j = i + 1`. Lúc này, vòng lặp con chỉ quét các phần tử đứng sau  phần tử `i` hiện tại.
+            loopCount++; 
+            if ( data[i].userId === data[j].userId && data[i].amount === data[j].amount) {// do j luôn lớn i nên bỏ điều kiện đầu được 
+                if (!duplicateIds.includes(data[i].id)) {
+                    duplicateIds.push(data[i].id);
+                }
+            }
+        }
+    }
+    console.log(`Số vòng lặp đã chạy: ${loopCount}`);
+    return duplicateIds;
+}
+  </script>
+</body>
+
+</html>
