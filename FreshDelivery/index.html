@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+    <h2>FreshDelivery</h2>
+    <p id="demo"></p>
+  <script>
+let orderList = [
+    { id: 101, amount: 150000, status: "pending" },
+    { id: 102, amount: 200000, status: "pending" },
+    { id: 103, amount: 50000, status: "pending" }
+];
+let driversAvailable = 2;
+
+
+function calculateTotal(orders) {
+    let total = 0;
+    for ( let i = 0;i < orders.length ;i++) {
+        if (orders[i].amount<=0){
+            continue;
+        }
+        total += orders[i].amount;
+    }
+    return total;
+}
+console.log("Tổng doang thu :",calculateTotal(orderList));
+let index =0;
+while (driversAvailable > 0 && index < orderList.length ) { 
+   orderList[index].status = "processing";
+
+    console.log("Đang xử lý đơn:", orderList[index].id);
+
+    driversAvailable--;
+    index++;
+}
+ let retryCount = 0;
+ let data =[];
+ do{
+    console.log("Thử lại lần:",retryCount+1);
+    data=retryCount==2?orderList:[];
+    retryCount ++;
+ }
+ while (data.length===0 && retryCount<3);
+ if (data.length > 0) {
+    console.log("Lấy dữ liệu thành công");
+} else {
+    console.log("Không lấy được dữ liệu");
+}
+
+  </script>
+</body>
+
+</html>
