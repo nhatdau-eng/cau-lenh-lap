@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+	<meta charset="UTF-8">
+	<title>MediCore System</title>
+</head>
+<body> 
+	<script>
+	
+let patientData = [
+    { id: "P001", name: "Nguyen Van A", status: "stable", age: 45, heartRate: 80 },
+    { id: "P002", name: "Tran Thi B", status: "critical", age: 60, heartRate: 130 },
+    { id: "P003", name: "Le Van C", status: "stable", age: 30, heartRate: 75 },
+    { id: "P004", name: "Pham Thi D", status: "critical", age: 72, heartRate: 45 }
+];
+
+// YÊU CẦU 1: THUẬT TOÁN TÌM KIẾM (Search)
+function findPatientById(dataArray, targetId) {
+    for (let i = 0; i < dataArray.length; i++) {
+        const patient = dataArray[i]; 
+        if (patient.id === targetId) {
+            return patient; 
+        }
+    }
+    return null;
+}
+
+function filterCriticalPatients(dataArray) {
+    let resultList = [];
+    for (let i =0;i<dataArray.length;i++){
+        const patient = dataArray[i]; 
+        if (patient.status==="critical"){
+            resultList.push(patient);
+           
+        }
+        
+    }
+    return resultList;
+}
+
+function calculateHospitalStats(dataArray) {
+    let totalHeartRate = 0;
+    let criticalCount = 0;
+     for (let i=0;i<dataArray.length;i++){
+        const patient = dataArray[i];
+     totalHeartRate += patient.heartRate;
+
+        if (patient.status === "critical") {
+            criticalCount++;
+        }
+    }
+    let averageHeartRate = 0;
+    if (dataArray.length > 0) {
+        averageHeartRate = totalHeartRate / dataArray.length;
+    }
+
+    return {
+        totalPatients: dataArray.length,
+        criticalCount: criticalCount,
+        totalHeartRate: totalHeartRate,
+        averageHeartRate: averageHeartRate
+    };
+}
+
+
+	</script>
+</body>
+</html

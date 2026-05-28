@@ -1,0 +1,30 @@
+===== TEST SEARCH =====
+{id: 'P05000', name: 'Patient 5000', ...}
+
+Kiểm tra undefined: false
+Kiểm tra null: false
+
+===== TEST FILTER =====
+Số bệnh nhân critical: 2000
+
+===== TEST STATS =====
+{
+  totalPatients: 10000,
+  criticalCount: 2000,
+  totalHeartRate: 995000,
+  averageHeartRate: 99.5
+}
+
+===== CHECK NaN =====
+averageHeartRate có phải NaN không: false
+totalHeartRate có phải NaN không: false
+
+===== TEST EMPTY ARRAY =====
+{
+  totalPatients: 0,
+  criticalCount: 0,
+  totalHeartRate: 0,
+  averageHeartRate: 0
+}
+
+Có NaN không: false
