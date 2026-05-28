@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+	<meta charset="UTF-8">
+	<title>TechBank</title>
+</head>
+<body> 
+	<script>
+const transactions = [150, -50, 200, -10, 500, 15000, -200, 300];
+let totalIncome = 0;
+//nhiệm vụ 1 
+for (let i=0 ;i<transactions.length; i++)
+if (transactions[i] > 0) {
+    totalIncome += transactions[i];
+}
+let index = 0 
+let hasFraud = false;
+//nhiệm vụ 2 
+while (index<transactions.length && hasFraud===false){
+
+    if (transactions[index] > 10000) {
+        hasFraud = true;
+
+        console.log(
+            "Phát hiện giao dịch đáng ngờ:",
+            transactions[index]
+        );
+
+    }
+  index++;
+}
+
+let attempts = 0;
+let isSuccess = false;
+ //nhiệm vụ 3 
+do {
+
+    attempts++;
+
+    console.log(
+        "Đang gửi báo cáo lần:",
+        attempts
+    );
+
+    isSuccess = (Math.random() > 0.8);
+    console.log(
+        "Kết quả gửi:",
+        isSuccess
+    );
+} while (!isSuccess && attempts < 3);
+if (isSuccess) {
+    console.log("Gửi báo cáo thành công");
+} else {
+    console.log("Gửi thất bại sau 3 lần thử");
+}
+console.log("Tổng số lần thử:", attempts);
+
+	</script>
+</body>
+</html
