@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+	<meta charset="UTF-8">
+	<title>Sử dụng vòng lặp while</title>
+</head>
+<body> 
+	<script>
+		let numbers = parseInt(prompt("Nhập số lượng số nguyên tố cần in:"));
+
+let count = 0;
+let N = 2;
+while (count < numbers) {
+    let isPrime = true;
+    for (let i = 2; i <= Math.sqrt(N); i++) {
+        if (N % i === 0) {
+            isPrime = false;
+            break;
+        }
+    }
+    if (isPrime) {
+        console.log(N);
+        count++;
+    }
+    N++;
+}
+	</script>
+</body>
+</html
