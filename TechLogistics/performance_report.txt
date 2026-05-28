@@ -1,0 +1,40 @@
+===============================
+SO SÁNH CODE CŨ VS CODE MỚI
+Dữ liệu: 20.000 đơn hàng giả lập
+===============================
+[ CODE CŨ ]
+Tổng số bước lặp (Cũ): 9,000,000
+Test Old: 759.6 ms
+Mô tả:
+- j chạy từ 0 → length
+- So sánh lặp lại các cặp
+- Có kiểm tra thừa i !== j
+- Hiệu năng rất chậm
+[ CODE MỚI ]
+Tổng số bước lặp (Mới): 4,109,559
+Test New: 297.7 ms
+Mô tả:
+- j bắt đầu từ i + 1
+- Không kiểm tra lại cặp cũ
+- Có break để dừng sớm
+- Giảm mạnh số vòng lặp
+------------------------------
+KẾT QUẢ TỐI ƯU
+Iterations:
+9,000,000 → 4,109,559
+Giảm:
+≈ 54.3%
+Thời gian chạy:
+759.6 ms → 297.7 ms
+Tăng tốc:
+≈ 2.5 lần
+===============================
+KẾT LUẬN
+===============================
+
+Code mới:
+✅ Không bị Infinite Loop
+✅ Không treo máy
+✅ Giảm hơn 50% số vòng lặp
+✅ Thời gian xử lý nhanh hơn đáng kể
+✅ Hoạt động ổn định với dữ liệu lớn

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+	<meta charset="UTF-8">
+	<title>TechLogistics</title>
+</head>
+<body> 
+	<script>
+function syncOrders() {
+    let attempts = 0;
+    const maxAttempts = 5;
+
+    console.log("Bắt đầu đồng bộ...");
+    while (attempts < maxAttempts) {
+        let networkError = true; 
+        
+        if (networkError) {
+            console.log(`Lỗi mạng lần ${attempts + 1}, thử lại...`);
+              attempts++; 
+            continue; 
+        }
+        
+        console.log("Đồng bộ thành công!");
+        break;
+      
+    }
+}
+function findDuplicateOrders(orders) {
+    let duplicates = [];
+    let iterations = 0;
+
+    // 
+    for (let i = 0; i < orders.length; i++) {
+        for (let j = i+1 ; j < orders.length; j++) {
+            iterations++;
+           
+            if (orders[i] === orders[j]) {
+                if (!duplicates.includes(orders[i])) {
+                    duplicates.push(orders[i]);
+                }
+                break;
+            }
+        }
+    }
+    console.log(`Tổng số bước lặp (Cũ): ${iterations}`);
+    return duplicates;
+}
+
+const dummyOrders = ["VN123", "VN456", "VN789", "VN123", "VN999", "VN456"];
+syncOrders();
+
+console.time("Test");
+
+console.log(
+    findDuplicateOrders(dummyOrders)
+);
+
+console.timeEnd("Test");
+	</script>
+</body>
+</html
